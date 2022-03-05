@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import io from "socket.io-client";
 import { InfoBar, Input, Messages, UserList } from ".";
+import { LogoutIcon } from "../icons";
 
 let socket;
 const API =
@@ -49,7 +50,7 @@ const Chat = () => {
       console.log(roomData);
       setUsersInRoom([...roomData.users]);
     });
-  }, []);
+  }, [location.search]);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -59,16 +60,14 @@ const Chat = () => {
     }
   };
 
-  console.log("Showing users: " + showUserList);
-
   return (
     <div className="outer ">
       <div
         className={`w-[90%] sm:w-2/4 mx-auto my-20 grid grid-cols-1 ${
-          showUserList && "lg:grid-cols-2"
+          showUserList && "lg:grid-cols-3"
         } `}
       >
-        <div className="chat-box">
+        <div className="chat-box col-span-2">
           <InfoBar
             room={room}
             numUsers={usersInRoom.length}
@@ -84,6 +83,17 @@ const Chat = () => {
         </div>
 
         {showUserList && <UserList users={usersInRoom} />}
+      </div>
+      <div className="w-max mx-auto my-20">
+        <a href="/" className="">
+          <button
+            type="button"
+            className="text-red-700 flex items-center hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+          >
+            <span className="mr-2">Leave Chat</span>
+            <LogoutIcon />
+          </button>
+        </a>
       </div>
     </div>
   );

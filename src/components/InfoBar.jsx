@@ -1,6 +1,5 @@
 import React from "react";
-import { UserList } from ".";
-import { OnlineStatusIcon, CloseIcon, UserGroupIcon } from "../icons";
+import { OnlineStatusIcon, UserGroupIcon, ChevronLeftIcon } from "../icons";
 
 const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
   return (
@@ -21,17 +20,13 @@ const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
           <UserGroupIcon />
         </div>
         <span
-          onClick={() => setShowUserList(true)}
-          className="text-blue-700 ml-2 px-2 border-2 border-blue-800 rounded-md font-bold cursor-pointer"
+          onClick={() => setShowUserList((prevState) => !prevState)}
+          className={`text-blue-700 ml-2 ${
+            !showUserList && "px-2"
+          } border-2 border-blue-800 rounded-md font-bold cursor-pointer`}
         >
-          {numUsers}
+          {showUserList ? <ChevronLeftIcon /> : numUsers}
         </span>
-      </div>
-
-      <div className="">
-        <a href="/">
-          <CloseIcon />
-        </a>
       </div>
     </div>
   );

@@ -5,3 +5,6 @@ export { default as ChatIcon } from "./chatIcon";
 export { default as ArrowCircleIcon } from "./arrowCircleIcon";
 export { default as UserGroupIcon } from "./userGroupIcon";
 export { default as UserIcon } from "./userIcon";
+export { default as LogoutIcon } from "./logoutIcon";
+export { default as PaperPlaneIcon } from "./paperPlaneIcon";
+export { default as ChevronLeftIcon } from "./chevronLeftIcon";
