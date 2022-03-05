@@ -12,7 +12,7 @@ const Join = () => {
 
   return (
     <div className="flex justify-center h-full w-full">
-      <div className="inner w-2/4 my-40 rounded-md bg-gray-200 px-10 pb-5 border border-gray-300">
+      <div className="w-[80%] sm:w-2/4 my-40 rounded-md bg-gray-200 px-10 pb-5 border border-gray-300">
         <h1 className="text-2xl pt-5 my-5 font-bold border-b border-gray-400">
           <ChatsIcon color={"#245bc8"} /> Chat Join
         </h1>

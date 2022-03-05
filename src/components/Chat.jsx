@@ -6,7 +6,12 @@ import io from "socket.io-client";
 import { InfoBar, Input, Messages, UserList } from ".";
 
 let socket;
-const API = "https://room-chat-app-mern.herokuapp.com/";
+const API =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000"
+    : "https://room-chat-app-mern.herokuapp.com/";
+console.log(API);
+console.log(process.env.NODE_ENV);
 
 const Chat = () => {
   const location = useLocation();
@@ -59,7 +64,7 @@ const Chat = () => {
   return (
     <div className="outer ">
       <div
-        className={`w-2/4 mx-auto my-20 grid grid-cols-1 ${
+        className={`w-[90%] sm:w-2/4 mx-auto my-20 grid grid-cols-1 ${
           showUserList && "lg:grid-cols-2"
         } `}
       >
