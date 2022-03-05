@@ -14,7 +14,7 @@ const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
       </div>
       <div className="flex items-center">
         <div
-          className="cursor-pointer"
+          className="cursor-pointer hover:text-blue-700"
           onClick={() => setShowUserList((prevState) => !prevState)}
         >
           <UserGroupIcon />
@@ -22,8 +22,8 @@ const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
         <span
           onClick={() => setShowUserList((prevState) => !prevState)}
           className={`text-blue-700 ml-2 ${
-            !showUserList && "px-2"
-          } border-2 border-blue-800 rounded-md font-bold cursor-pointer`}
+            !showUserList && "px-2 "
+          } border-2 border-blue-800 rounded-md font-bold cursor-pointer transition-all duration-300 hover:bg-blue-700 hover:text-white`}
         >
           {showUserList ? <ChevronLeftIcon /> : numUsers}
         </span>
