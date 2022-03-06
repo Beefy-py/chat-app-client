@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import io from "socket.io-client";
 import { InfoBar, Input, Messages, UserList } from ".";
 import { LogoutIcon } from "../icons";
 
 let socket;
+
 const API =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000"
     : "https://room-chat-app-mern.herokuapp.com/";
-console.log(API);
-console.log(process.env.NODE_ENV);
 
 const Chat = () => {
   const location = useLocation();
@@ -34,8 +33,8 @@ const Chat = () => {
     socket.emit("join", { name, room }, () => {});
 
     socket.on("message", (message) => {
-      console.log("message received", message);
-      setMessages([...messages, message]);
+      console.log("Fetched new message");
+      setMessages((messages) => [...messages, message]);
     });
 
     socket.on("roomData", (roomData) => {
@@ -46,7 +45,16 @@ const Chat = () => {
       socket.emit("disconnect");
       socket.off();
     };
-  }, [API, location.search]);
+  }, [location.search]);
+
+  // useEffect(() => {
+  //   console.log(socket);
+
+  //   socket.on("message", (message) => {
+  //     console.log("message received", message);
+  //     setMessages([...messages, message]);
+  //   });
+  // }, [messages]);
 
   const sendMessage = (e) => {
     e.preventDefault();
