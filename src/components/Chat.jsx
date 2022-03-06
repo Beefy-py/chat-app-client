@@ -33,13 +33,6 @@ const Chat = () => {
 
     socket.emit("join", { name, room }, () => {});
 
-    return () => {
-      socket.emit("disconnect");
-      socket.off();
-    };
-  }, [API, location.search]);
-
-  useEffect(() => {
     socket.on("message", (message) => {
       console.log("message received", message);
       setMessages([...messages, message]);
@@ -48,7 +41,12 @@ const Chat = () => {
     socket.on("roomData", (roomData) => {
       setUsersInRoom([...roomData.users]);
     });
-  }, [messages]);
+
+    return () => {
+      socket.emit("disconnect");
+      socket.off();
+    };
+  }, [API, location.search]);
 
   const sendMessage = (e) => {
     e.preventDefault();
