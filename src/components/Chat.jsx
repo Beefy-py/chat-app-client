@@ -47,15 +47,6 @@ const Chat = () => {
     };
   }, [location.search]);
 
-  // useEffect(() => {
-  //   console.log(socket);
-
-  //   socket.on("message", (message) => {
-  //     console.log("message received", message);
-  //     setMessages([...messages, message]);
-  //   });
-  // }, [messages]);
-
   const sendMessage = (e) => {
     e.preventDefault();
 
