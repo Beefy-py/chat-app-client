@@ -1,5 +1,5 @@
 import React from "react";
-import { OnlineStatusIcon, UserGroupIcon, ChevronLeftIcon } from "../icons";
+import { OnlineStatusIcon, UserGroupIcon, CloseIcon } from "../icons";
 
 const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
   return (
@@ -23,7 +23,7 @@ const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
             !showUserList && "px-2 "
           } border-2 border-blue-800 rounded-md font-bold cursor-pointer transition-all duration-300 hover:bg-blue-700 hover:text-white`}
         >
-          {showUserList ? <ChevronLeftIcon /> : numUsers}
+          {showUserList ? <CloseIcon /> : numUsers}
         </span>
       </div>
     </div>

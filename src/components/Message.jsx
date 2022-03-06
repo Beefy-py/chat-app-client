@@ -5,8 +5,6 @@ const Message = ({ message, name }) => {
   let isSentByCurrentUser = false;
   const trimmedName = name.trim().toLowerCase();
 
-  console.log(message.color);
-
   const infoClasses = message.color
     ? `text-${message.color}-700 bg-${message.color}-100 dark:bg-${message.color}-200 dark:text-${message.color}-800`
     : "";
@@ -20,7 +18,7 @@ const Message = ({ message, name }) => {
       <div className={"flex p-4 text-sm rounded-l " + infoClasses} role="alert">
         <InfoIcon />
         <div>
-          <span class="font-medium">Admin: </span> {message.text}
+          <span className="font-medium">Admin: </span> {message.text}
         </div>
       </div>
     );
