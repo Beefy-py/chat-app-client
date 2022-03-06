@@ -41,16 +41,14 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("message", (message) => {
+      console.log("message received", message);
       setMessages([...messages, message]);
     });
-  }, [messages]);
 
-  useEffect(() => {
     socket.on("roomData", (roomData) => {
-      console.log(roomData);
       setUsersInRoom([...roomData.users]);
     });
-  }, [location.search]);
+  }, [messages]);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -89,7 +87,7 @@ const Chat = () => {
         <a href="/" className="">
           <button
             type="button"
-            className="text-red-700 transition-all duration-300 flex items-center hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+            className="text-red-700 transition-all duration-300 flex items-center hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
           >
             <span className="mr-2">Leave Chat</span>
             <LogoutIcon />

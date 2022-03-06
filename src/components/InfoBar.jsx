@@ -4,9 +4,7 @@ import { OnlineStatusIcon, UserGroupIcon, ChevronLeftIcon } from "../icons";
 const InfoBar = ({ room, numUsers, showUserList, setShowUserList }) => {
   return (
     <div
-      className={`flex items-center sm:rounded-t-md ${
-        showUserList && "lg:rounded-r-none"
-      } p-2 bg-gray-200 justify-between border border-gray-400`}
+      className={`flex items-center p-2 bg-gray-200 justify-between border border-gray-400`}
     >
       <div className="flex items-center">
         <OnlineStatusIcon />
