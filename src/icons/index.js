@@ -9,3 +9,4 @@ export { default as LogoutIcon } from "./logoutIcon";
 export { default as PaperPlaneIcon } from "./paperPlaneIcon";
 export { default as ChevronLeftIcon } from "./chevronLeftIcon";
 export { default as InfoIcon } from "./infoIcon";
+export { default as ExclamationIcon } from "./exclamationIcon";

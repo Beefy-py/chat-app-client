@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import io from "socket.io-client";
 import { InfoBar, Input, Messages, UserList } from ".";
@@ -13,8 +13,9 @@ const API =
     ? "http://localhost:5000"
     : "https://room-chat-app-mern.herokuapp.com/";
 
-const Chat = () => {
+const Chat = ({ setAlert }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
@@ -30,7 +31,12 @@ const Chat = () => {
 
     socket = io(API);
 
-    socket.emit("join", { name, room }, () => {});
+    socket.emit("join", { name, room }, (error) => {
+      if (error) {
+        navigate("/");
+        setAlert(error.message);
+      }
+    });
 
     socket.on("message", (message) => {
       console.log("Fetched new message");
